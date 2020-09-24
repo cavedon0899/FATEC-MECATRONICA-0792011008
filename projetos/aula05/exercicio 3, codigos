@@ -1,4 +1,3 @@
-a06-ltpc2-2020-2.py
 #O programa deve ler o codigo do produto e consultar seu valor em uma
 #tabela de precos pre-definida. Exibir o total do pedido para o usuario
 
@@ -10,6 +9,13 @@ def pegarPreco(codigo):
   else:
     return -1
 
+def calcularPrecoTotal(lista):
+  total = 0
+  #Passa por todos os itens da lista
+  for item in lista:
+    if pegarPreco(item) != -1:
+      total = total + pegarPreco(item)
+  return total
 
 produtos = []
 continuar = True
@@ -17,3 +23,4 @@ while continuar:
   codigo = int(input('Codigo:'))
   produtos.append(codigo)
   continuar = input('Continuar?') == 's'
+print("Valor Total:", calcularPrecoTotal(produtos))
